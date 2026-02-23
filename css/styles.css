@@ -1,105 +1,9 @@
-/*=== START CSS RESET ===*/
-/* borrowed from https://piccalil.li/blog/a-more-modern-css-reset/ */
-/* Box sizing rules */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Prevent font size inflation */
-html {
-  -moz-text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-}
-
-/* Remove default margin in favour of better control in authored CSS */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
-  margin-block-end: 0;
-}
-
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role="list"],
-ol[role="list"] {
-  list-style: none;
-}
-
-/* Set core body defaults */
-body {
-  min-height: 100vh;
-  line-height: 1.5;
-}
-
-/* Set shorter line heights on headings and interactive elements */
-h1,
-h2,
-h3,
-h4,
-button,
-input,
-label {
-  line-height: 1.1;
-}
-
-/* Balance text wrapping on headings */
-h1,
-h2,
-h3,
-h4 {
-  text-wrap: balance;
-}
-
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-  color: currentColor;
-}
-
-/* Make images easier to work with */
-img,
-picture {
-  max-width: 100%;
-  display: block;
-}
-
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font-family: inherit;
-  font-size: inherit;
-}
-
-/* Make sure textareas without a rows attribute are not tiny */
-textarea:not([rows]) {
-  min-height: 10em;
-}
-
-/* Anything that has been anchored to should have extra scroll margin */
-:target {
-  scroll-margin-block: 5ex;
-}
-
-/*=== END CSS RESET ===*/
-
 /* Shared Page Navigation */
 .page-nav {
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
-  gap: var(--vs-base);
+  --layout-gap: var(--vs-base);
   padding: var(--pad-l);
   z-index: 10;
 }
@@ -108,7 +12,6 @@ textarea:not([rows]) {
   color: var(--teal-8);
   text-decoration: none;
   font-weight: 700;
-  --fl: 0;
 }
 
 .page-nav__link[aria-current="page"] {
@@ -126,14 +29,20 @@ textarea:not([rows]) {
   outline-offset: 3px;
 }
 
-@media (width < 480px) {
-  .page-nav {
-    padding: var(--pad-m);
-  }
+a:not([class]) {
+  color: var(--blue-3);
+}
+
+a:not([class]):visited {
+  color: var(--blue-1);
+}
+
+a:not([class]):hover {
+  color: var(--blue-5);
 }
 
 /* Hero Layout */
-.hero {
+:is(.hero, .about) {
   min-height: 100vh;
   display: grid;
   place-items: center;
@@ -141,22 +50,20 @@ textarea:not([rows]) {
   background: var(--black-9);
 }
 
-/* Hero Card */
-.hero__card {
+/* Shared Cards */
+:is(.hero__card, .about__card) {
   width: min(94vw, 980px);
   background: var(--teal-9);
   color: var(--black-9);
   padding: clamp(1.35rem, 4.5vw, 3.5rem);
   box-shadow: var(--shadow-6);
-  display: grid;
-  gap: var(--vs-m);
+  --layout-gap: var(--vs-m);
 }
 
-.hero__name {
+:is(.hero__name, .about__title) {
   margin: 0;
   font-style: italic;
   font-weight: 900;
-  --fl: 5;
   line-height: var(--lh-xs);
   letter-spacing: -0.025em;
 }
@@ -165,7 +72,6 @@ textarea:not([rows]) {
   margin: 0;
   max-width: 54ch;
   font-weight: 700;
-  --fl: 1;
   line-height: 1.55;
   text-wrap: pretty;
   overflow-wrap: anywhere;
@@ -183,22 +89,16 @@ textarea:not([rows]) {
   color: var(--teal-9);
   border: var(--border-2);
   border-color: var(--black-8);
-  padding: calc(var(--pad-xs) + 0.15rem) var(--pad-l);
+  padding: var(--pad-xs) var(--pad-s);
 }
 
 /* Hero Social Links */
 .hero__social {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: var(--vs-base);
+  --layout-gap: var(--vs-base);
   margin: 0;
 }
 
 .hero__social-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   min-width: 2rem;
   min-height: 2rem;
   --button-color: transparent;
@@ -236,148 +136,63 @@ textarea:not([rows]) {
   stroke: none;
 }
 
-@media (width < 640px) {
-  .hero {
-    place-items: start center;
-    padding-block-start: calc(var(--pad-xxl) + var(--vs-base));
-  }
-}
-
-@media (width < 480px) {
-  .hero {
-    padding: var(--pad-m);
-    padding-block-start: calc(var(--pad-xl) + var(--vs-base));
-  }
-
-  .hero__card {
-    width: min(95vw, 980px);
-    padding: clamp(1.1rem, 5vw, 1.5rem);
-    gap: var(--vs-base);
-  }
-
-  .hero__name {
-    --fl: 4;
-    letter-spacing: -0.02em;
-  }
-
-  .hero__bio {
-    --fl: 0;
-    max-width: 100%;
-    line-height: 1.5;
-  }
-
-  .hero__cta {
-    --fl: 0;
-    padding: calc(var(--pad-xs) + 0.1rem) var(--pad-m);
-  }
-
-  .hero__social {
-    gap: var(--vs-s);
-  }
-
-  .hero__social-link {
-    min-width: 2.125rem;
-    min-height: 2.125rem;
-  }
-}
-
-/* Hero Responsive */
-@media (width >= 640px) {
-  .hero {
-    padding: var(--pad-xxl) var(--pad-xl);
-  }
-
-  .hero__card {
-    width: min(92vw, 980px);
-    gap: var(--vs-m);
-  }
-
-  .hero__bio {
-    --fl: 2;
-    line-height: 1.62;
-  }
-
-  .hero__social {
-    gap: var(--vs-m);
-  }
-}
-
-@media (width >= 1100px) {
-  .hero {
-    padding: var(--pad-xxxl) var(--pad-xxl);
-  }
-
-  .hero__card {
-    width: min(88vw, 980px);
-    padding: clamp(2.25rem, 3.4vw, 4rem);
-  }
-}
-
 /* About Page */
-.about {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: var(--pad-l);
-  background: var(--black-9);
-}
-
-.about__card {
-  width: min(94vw, 980px);
-  background: var(--teal-9);
-  color: var(--black-9);
-  padding: clamp(1.35rem, 4.5vw, 3.5rem);
-  box-shadow: var(--shadow-6);
-  display: grid;
-  gap: var(--vs-m);
-}
-
-.about__title {
-  margin: 0;
-  font-style: italic;
-  font-weight: 900;
-  --fl: 5;
-  line-height: var(--lh-xs);
-  letter-spacing: -0.025em;
-}
-
 .about__bio h2 {
   margin: 0;
-  --fl: 1;
   font-weight: 800;
 }
 
 .about__bio p {
   margin: var(--vs-s) 0 0;
   max-width: 62ch;
-  --fl: 0;
   line-height: 1.6;
   font-weight: 600;
   text-wrap: pretty;
 }
 
 @media (width < 640px) {
-  .about {
+  :is(.hero, .about) {
     place-items: start center;
     padding-block-start: calc(var(--pad-xxl) + var(--vs-base));
   }
 }
 
 @media (width < 480px) {
-  .about {
+  .page-nav {
+    padding: var(--pad-m);
+  }
+
+  :is(.hero, .about) {
     padding: var(--pad-m);
     padding-block-start: calc(var(--pad-xl) + var(--vs-base));
   }
 
-  .about__card {
+  :is(.hero__card, .about__card) {
     width: min(95vw, 980px);
     padding: clamp(1.1rem, 5vw, 1.5rem);
-    gap: var(--vs-base);
+    --layout-gap: var(--vs-base);
   }
 
-  .about__title {
-    --fl: 4;
+  :is(.hero__name, .about__title) {
     letter-spacing: -0.02em;
+  }
+
+  .hero__bio {
+    max-width: 100%;
+    line-height: 1.5;
+  }
+
+  .hero__cta {
+    padding: var(--pad-xs) var(--pad-xs);
+  }
+
+  .hero__social {
+    --layout-gap: var(--vs-s);
+  }
+
+  .hero__social-link {
+    min-width: 2.125rem;
+    min-height: 2.125rem;
   }
 
   .about__bio p {
@@ -386,21 +201,30 @@ textarea:not([rows]) {
 }
 
 @media (width >= 640px) {
-  .about {
+  :is(.hero, .about) {
     padding: var(--pad-xxl) var(--pad-xl);
   }
 
-  .about__card {
+  :is(.hero__card, .about__card) {
     width: min(92vw, 980px);
+    --layout-gap: var(--vs-m);
+  }
+
+  .hero__bio {
+    line-height: 1.62;
+  }
+
+  .hero__social {
+    --layout-gap: var(--vs-m);
   }
 }
 
 @media (width >= 1100px) {
-  .about {
+  :is(.hero, .about) {
     padding: var(--pad-xxxl) var(--pad-xxl);
   }
 
-  .about__card {
+  :is(.hero__card, .about__card) {
     width: min(88vw, 980px);
     padding: clamp(2.25rem, 3.4vw, 4rem);
   }
