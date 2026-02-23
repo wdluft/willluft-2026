@@ -107,10 +107,14 @@ textarea:not([rows]) {
 .page-nav__link {
   color: var(--teal-8);
   text-decoration: none;
-  text-decoration-thickness: 0.08em;
-  text-underline-offset: 0.16em;
   font-weight: 700;
   --fl: 0;
+}
+
+.page-nav__link[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
 }
 
 .page-nav__link:hover {
@@ -291,9 +295,17 @@ textarea:not([rows]) {
   }
 }
 
+@media (width < 640px) {
+  .hero {
+    place-items: start center;
+    padding-block-start: calc(var(--pad-xxl) + var(--vs-base));
+  }
+}
+
 @media (width < 480px) {
   .hero {
     padding: var(--pad-m);
+    padding-block-start: calc(var(--pad-xl) + var(--vs-base));
   }
 
   .hero__card {
@@ -403,9 +415,17 @@ textarea:not([rows]) {
   text-wrap: pretty;
 }
 
+@media (width < 640px) {
+  .about {
+    place-items: start center;
+    padding-block-start: calc(var(--pad-xxl) + var(--vs-base));
+  }
+}
+
 @media (width < 480px) {
   .about {
     padding: var(--pad-m);
+    padding-block-start: calc(var(--pad-xl) + var(--vs-base));
   }
 
   .about__card {
