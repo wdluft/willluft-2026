@@ -251,7 +251,7 @@ textarea:not([rows]) {
   stroke-linejoin: round;
 }
 
-.hero__social-link:first-child svg {
+.hero__social-link--twitter svg {
   fill: currentColor;
   stroke: none;
 }
