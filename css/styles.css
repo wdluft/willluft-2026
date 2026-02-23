@@ -179,38 +179,11 @@ textarea:not([rows]) {
 
 .hero__cta {
   justify-self: start;
+  --button-color: var(--black-9);
   color: var(--teal-9);
-  background: var(--black-9);
-  text-decoration: none;
-  font-weight: 800;
-  --fl: 1;
-  line-height: var(--lh-xs);
   border: var(--border-2);
   border-color: var(--black-8);
-  border-radius: 999px;
   padding: calc(var(--pad-xs) + 0.15rem) var(--pad-l);
-  transition:
-    background-color 0.18s var(--ease-smooth),
-    border-color 0.18s var(--ease-smooth),
-    box-shadow 0.18s var(--ease-smooth),
-    transform 0.12s var(--ease-smooth);
-}
-
-.hero__cta:hover {
-  background: var(--black-8);
-  border-color: var(--black-9);
-  transform: translateY(-1px);
-}
-
-.hero__cta:focus-visible {
-  outline: 2px solid var(--black-9);
-  outline-offset: 2px;
-  background: var(--black-8);
-}
-
-.hero__cta:active {
-  background: var(--black-7);
-  transform: translateY(1px);
 }
 
 /* Hero Social Links */
@@ -228,20 +201,23 @@ textarea:not([rows]) {
   justify-content: center;
   min-width: 2rem;
   min-height: 2rem;
-  color: inherit;
-  text-decoration: none;
-  font-weight: 800;
-  --fl: 1;
-  line-height: var(--lh-xs);
+  --button-color: transparent;
+  background: var(--black-9);
+  color: var(--primary-9);
   border: var(--border-2);
   border-color: var(--black-7);
-  border-radius: 999px;
-  padding: calc(var(--pad-xs) + 0.05rem) var(--pad-s);
-  transition:
-    background-color 0.18s var(--ease-smooth),
-    border-color 0.18s var(--ease-smooth),
-    box-shadow 0.18s var(--ease-smooth),
-    transform 0.12s var(--ease-smooth);
+  box-shadow: none;
+}
+
+.hero__social-link:hover {
+  background: var(--black-8);
+  color: var(--primary-9);
+  border-color: var(--black-8);
+}
+
+.hero__social-link:active {
+  background: var(--black-7);
+  color: var(--primary-9);
 }
 
 .hero__social svg {
@@ -258,41 +234,6 @@ textarea:not([rows]) {
 .hero__social-link--twitter svg {
   fill: currentColor;
   stroke: none;
-}
-
-.hero__social-link:hover {
-  background: var(--black-3);
-  border-color: var(--black-8);
-  box-shadow: 0 2px 0 var(--black-3);
-  transform: translateY(-1px);
-}
-
-.hero__social-link:focus-visible {
-  outline: 2px solid var(--black-9);
-  outline-offset: 2px;
-  background: var(--black-2);
-  border-color: var(--black-8);
-}
-
-.hero__social-link:active {
-  background: var(--black-4);
-  border-color: var(--black-9);
-  box-shadow: inset 0 1px 0 var(--black-5);
-  transform: translateY(1px);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero__cta,
-  .hero__social-link {
-    transition: none;
-  }
-
-  .hero__cta:hover,
-  .hero__cta:active,
-  .hero__social-link:hover,
-  .hero__social-link:active {
-    transform: none;
-  }
 }
 
 @media (width < 640px) {

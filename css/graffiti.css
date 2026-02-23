@@ -379,7 +379,7 @@
       1
     );
 
-    --primary: var(--blue);
+    --primary: var(--teal);
     --error: var(--red);
     --warning: var(--yellow);
     --success: var(--green);
