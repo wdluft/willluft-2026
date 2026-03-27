@@ -1,30 +1,34 @@
 /* Shared Page Navigation */
-.page-nav {
+header.header {
   position: fixed;
   top: 0;
   left: 0;
-  --layout-gap: var(--vs-base);
   padding: var(--pad-l);
   z-index: 10;
+  background: transparent;
 }
 
-.page-nav__link {
+.page-nav {
+  --layout-gap: var(--vs-base);
+}
+
+.nav-link {
   color: var(--teal-8);
   text-decoration: none;
   font-weight: 700;
 }
 
-.page-nav__link[aria-current="page"] {
+.nav-link[aria-current="page"] {
   text-decoration: underline;
   text-decoration-thickness: 0.08em;
   text-underline-offset: 0.16em;
 }
 
-.page-nav__link:hover {
+.nav-link:hover {
   color: var(--teal-9);
 }
 
-.page-nav__link:focus-visible {
+.nav-link:focus-visible {
   outline: 2px solid var(--teal-8);
   outline-offset: 3px;
 }
@@ -43,7 +47,7 @@ a:not([class]):hover {
 
 /* Hero Layout */
 :is(.hero, .about) {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   place-items: center;
   padding: var(--pad-l);
@@ -51,7 +55,7 @@ a:not([class]):hover {
 }
 
 /* Shared Cards */
-:is(.hero__card, .about__card) {
+:is(.hero-card, .about-card) {
   width: min(94vw, 980px);
   background: var(--teal-9);
   color: var(--black-9);
@@ -60,7 +64,7 @@ a:not([class]):hover {
   --layout-gap: var(--vs-m);
 }
 
-:is(.hero__name, .about__title) {
+:is(.hero-name, .about-title) {
   margin: 0;
   font-style: italic;
   font-weight: 900;
@@ -68,7 +72,7 @@ a:not([class]):hover {
   letter-spacing: -0.025em;
 }
 
-.hero__bio {
+.hero-bio {
   margin: 0;
   max-width: 54ch;
   font-weight: 700;
@@ -77,13 +81,13 @@ a:not([class]):hover {
   overflow-wrap: anywhere;
 }
 
-.hero__bio a {
+.hero-bio a {
   font-weight: 800;
   text-decoration-thickness: 0.08em;
   text-underline-offset: 0.15em;
 }
 
-.hero__cta {
+.hero-cta {
   justify-self: start;
   --button-color: var(--black-9);
   color: var(--teal-9);
@@ -93,12 +97,12 @@ a:not([class]):hover {
 }
 
 /* Hero Social Links */
-.hero__social {
+.hero-social {
   --layout-gap: var(--vs-base);
   margin: 0;
 }
 
-.hero__social-link {
+.hero-social-link {
   min-width: 2rem;
   min-height: 2rem;
   --button-color: transparent;
@@ -109,18 +113,18 @@ a:not([class]):hover {
   box-shadow: none;
 }
 
-.hero__social-link:hover {
+.hero-social-link:hover {
   background: var(--black-8);
   color: var(--primary-9);
   border-color: var(--black-8);
 }
 
-.hero__social-link:active {
+.hero-social-link:active {
   background: var(--black-7);
   color: var(--primary-9);
 }
 
-.hero__social svg {
+.hero-social svg {
   width: 1.05rem;
   height: 1.05rem;
   display: block;
@@ -131,18 +135,18 @@ a:not([class]):hover {
   stroke-linejoin: round;
 }
 
-.hero__social-link--twitter svg {
+.hero-social-twitter svg {
   fill: currentColor;
   stroke: none;
 }
 
 /* About Page */
-.about__bio h2 {
+.about-bio h2 {
   margin: 0;
   font-weight: 800;
 }
 
-.about__bio p {
+.about-bio p {
   margin: var(--vs-s) 0 0;
   max-width: 62ch;
   line-height: 1.6;
@@ -158,7 +162,7 @@ a:not([class]):hover {
 }
 
 @media (width < 480px) {
-  .page-nav {
+  header.header {
     padding: var(--pad-m);
   }
 
@@ -167,35 +171,35 @@ a:not([class]):hover {
     padding-block-start: calc(var(--pad-xl) + var(--vs-base));
   }
 
-  :is(.hero__card, .about__card) {
+  :is(.hero-card, .about-card) {
     width: min(95vw, 980px);
     padding: clamp(1.1rem, 5vw, 1.5rem);
     --layout-gap: var(--vs-base);
   }
 
-  :is(.hero__name, .about__title) {
+  :is(.hero-name, .about-title) {
     letter-spacing: -0.02em;
   }
 
-  .hero__bio {
+  .hero-bio {
     max-width: 100%;
     line-height: 1.5;
   }
 
-  .hero__cta {
+  .hero-cta {
     padding: var(--pad-xs) var(--pad-xs);
   }
 
-  .hero__social {
+  .hero-social {
     --layout-gap: var(--vs-s);
   }
 
-  .hero__social-link {
+  .hero-social-link {
     min-width: 2.125rem;
     min-height: 2.125rem;
   }
 
-  .about__bio p {
+  .about-bio p {
     max-width: 100%;
   }
 }
@@ -205,16 +209,16 @@ a:not([class]):hover {
     padding: var(--pad-xxl) var(--pad-xl);
   }
 
-  :is(.hero__card, .about__card) {
+  :is(.hero-card, .about-card) {
     width: min(92vw, 980px);
     --layout-gap: var(--vs-m);
   }
 
-  .hero__bio {
+  .hero-bio {
     line-height: 1.62;
   }
 
-  .hero__social {
+  .hero-social {
     --layout-gap: var(--vs-m);
   }
 }
@@ -224,7 +228,7 @@ a:not([class]):hover {
     padding: var(--pad-xxxl) var(--pad-xxl);
   }
 
-  :is(.hero__card, .about__card) {
+  :is(.hero-card, .about-card) {
     width: min(88vw, 980px);
     padding: clamp(2.25rem, 3.4vw, 4rem);
   }

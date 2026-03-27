@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh api:*)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(find C:UserswilliDocumentswillluft-2026 -type f -name *.html -o -name *.css -o -name package.json -o -name *.config.*)",
+      "Bash(grep -E \"\\\\.\\(js|json|config|mjs|ts\\)$\")",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}
